@@ -5,6 +5,15 @@
 # Licensed under the MIT License (http://opensource.org/licenses/MIT)
 ##
 
+# -------------- #
+# Log Management #
+# -------------- #
+
+# The number of log file to maintain
+# Default is 20
+log_file_rollover=
+
+
 # ---------------- #
 # Scheduling Setup #
 # ---------------- #
@@ -35,18 +44,6 @@ yearly_db_backup_rollover=
 # Default value is "weekly"
 system_backup_freq=
 
-# Frequency of backup to on site backup location
-# Can take the values: "daily", "weekly", "monthly", or "yearly"
-# Default value is "daily"
-# Not used if On-site Host section not filled out
-on_site_backup_freq=
-
-# Frequency of backup to off site backup location
-# Can take the values: "daily", "weekly", "monthly", or "yearly"
-# Default value is "monthly"
-# Not used if Off-site Host section not filled out
-off_site_backup_freq=
-
 
 # ------------------- #
 # Administrator Setup #
@@ -67,6 +64,19 @@ mailto=
 # Can take "yes" or "no"
 # Default value is "no"
 remote_system_backup_only=
+
+# Sets the files to be backed up; if not set, terminator will back up root (/)
+# Formatted as a bash array --> ("/path/to/dir1" "/path/to/dir2")
+# Requires ABSOLUTE PATH
+# Defaults to backing up entire system
+system_backup_files=()
+
+# Setting to ignore specific locations (directories or files) during the system
+#     backup
+# Formatted as a bash array --> ("/path/to/dir1" "/path/to/dir2")
+# Requires ABSOLUTE PATH
+# Defaults to empty, backing up entire system
+system_backup_ignore_list=()
 
 
 # --------------- #
